@@ -5,7 +5,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.Set;
 
 @Entity
 @Table(name = "generos")
@@ -15,6 +17,9 @@ public class Genero {
     private long id;
     @Column(nullable = false)
     private String nome;
+
+    @OneToMany(mappedBy = "genero")
+    private Set<Livro> livros; 
 
     public long getId() {
         return id;
